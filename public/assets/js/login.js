@@ -1,4 +1,13 @@
-// 
+// memuat header dan footer
+fetch('./templates/header.html').then(function(response){return response.text()}).then(function(data){const header = document.getElementById('header'); header.innerHTML = data})
+fetch('./templates/footer.html')
+.then(function(response){
+    return response.text();
+})
+.then(function(data){
+    document.getElementById('footer').innerHTML = data;
+})
+
 
 const formLogin = document.getElementById('formLogin');
 

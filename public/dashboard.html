@@ -1,11 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard POS</title>
+    <title>ElkPOS - Dashboard Kasir</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons (Untuk mempercantik menu sidebar) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 </head>
-<body>
-    <center><h1>Selamat  Datang di dashboard ElkPOS</h1></center>
+<body class="bg-light">
+
+    <!-- Kontainer Utama Dashboard (Menggunakan Flexbox) -->
+    <div class="d-flex" style="height: 100vh; overflow: hidden;">
+
+        <!-- ========================================== -->
+        <!-- 1. SIDEBAR (Lebar tetap di laptop, sembunyi di HP) -->
+        <!-- ========================================== -->
+        <div class="bg-dark text-white p-3 d-none d-md-flex flex-column" style="width: 280px; flex-shrink: 0;">
+            <!-- Logo / Brand -->
+            <a href="#" class="d-flex align-items-center mb-4 text-white text-decoration-none fs-4 fw-bold">
+                <i class="bi bi-cpu-fill me-2 text-warning"></i> ElkPOS
+            </a>
+            
+            <hr class="border-secondary">
+
+            <!-- Daftar Menu Navigasi -->
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link active bg-warning text-dark fw-semibold" aria-current="page">
+                        <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link text-white hover-opacity">
+                        <i class="bi bi-cart3 me-2"></i> Mesin Kasir
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link text-white hover-opacity">
+                        <i class="bi bi-box-seam me-2"></i> Stok Produk
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link text-white hover-opacity">
+                        <i class="bi bi-graph-up-arrow me-2"></i> Laporan
+                    </a>
+                </li>
+            </ul>
+
+            <hr class="border-secondary">
+
+            <!-- Profil Pengguna / Kasir Aktif -->
+            <div class="dropdown">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <strong class="small"><i class="bi bi-person-circle me-2"></i> Kasir: Ahmad</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end shadow">
+                    <li><a class="dropdown-item" href="#">Profil</a></li>
+                    <li><a class="dropdown-item" href="#">Buka/Tutup Shift</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-danger" href="#">Keluar</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- 2. AREA KONTEN UTAMA (Sisi Kanan) -->
+        <!-- ========================================== -->
+        <div class="d-flex flex-column flex-grow-1" style="overflow-y: auto;">
+            
+            <!-- TOPBAR TIPIS -->
+            <header class="navbar navbar-expand bg-white border-bottom px-4 py-2 justify-content-between">
+                <!-- Tombol toggle menu (Hanya muncul di HP untuk memanggil sidebar nanti) -->
+                <button class="btn btn-outline-dark d-md-none me-2" type="button">
+                    <i class="bi bi-list"></i>
+                </button>
+                
+                <!-- Info Status Hari Ini -->
+                <div class="text-muted small d-none d-sm-block">
+                    <i class="bi bi-calendar3 me-1"></i> Shift Pagi | Terminal 01
+                </div>
+
+                <!-- Bagian Kanan Topbar (Notifikasi & Pencarian) -->
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-sm btn-light position-relative">
+                        <i class="bi bi-bell"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
+                    </button>
+                    <span class="badge bg-success">Sistem Sinkron</span>
+                </div>
+            </header>
+
+            <!-- KONTEN HALAMAN SEBENARNYA -->
+            <main class="p-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Ringkasan Penjualan</h1>
+                </div>
+
+                <!-- Di sini nanti kita akan meletakkan kartu ringkasan atau tabel transaksi -->
+                <div class="alert alert-warning border-0 shadow-sm" role="alert">
+                    <h4 class="alert-heading"><i class="bi bi-info-circle-fill me-2"></i>Halo Ahmad!</h4>
+                    <p class="mb-0">Selamat bekerja. Pastikan printer struk kasir sudah menyala dan terhubung ke sistem sebelum memulai transaksi pertama.</p>
+                </div>
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS (WAJIB untuk dropdown kasir) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
