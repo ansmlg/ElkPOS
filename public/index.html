@@ -6,21 +6,43 @@
     <title>Home || ElkPOS</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
-<body class="d-flex flex-column min-vh-100">
-    <!-- header -->
+<body class="d-flex flex-column min-vh-100 bg-light">
+    <!-- header (Nanti diisi navbar lewat JS) -->
     <div id="header-palceholder"></div>
 
-    <div class="container-fluid min-vh-100">
-        <center><h1>Wellcome</h1></center>
-        
-        <a href="dashboard.html">ke dashboard dulu</a>
-        <a href="login.html">login</a>
-    </div>
+    <!-- AREA KONTEN UTAMA: Ditengah secara vertikal & horizontal -->
+    <main class="container flex-grow-1 d-flex align-items-center justify-content-center py-5">
+        <div class="text-center p-5 bg-white rounded-4 shadow-sm" style="max-width: 600px;">
+            
+            <!-- Icon/Logo Pemanis -->
+            <div class="mb-4">
+                <i class="bi bi-cpu-fill text-warning display-1"></i>
+            </div>
+            
+            <!-- Judul Selamat Datang -->
+            <h1 class="fw-bold mb-3 text-dark">Selamat Datang di <span class="text-warning">ElkPOS</span></h1>
+            <p class="text-muted mb-5">
+                Solusi sistem kasir digital modern yang cepat, aman, dan dirancang khusus untuk mempermudah pengelolaan bisnis ritel hingga UMKM Anda.
+            </p>
 
+            <!-- Tombol Navigasi (Call to Action) -->
+            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                <a href="login.html" class="btn btn-warning btn-lg px-4 gap-3 fw-semibold text-dark shadow-sm">
+                    <i class="bi bi-box-arrow-in-right me-2"></i>Masuk Aplikasi
+                </a>
+                <a href="dashboard.html" class="btn btn-outline-secondary btn-lg px-4">
+                    Lihat Demo Dashboard
+                </a>
+            </div>
 
+        </div>
+    </main>
 
-    <!-- footer -->
-     <div id="footer-paceholder"></div>
+    <!-- footer (Nanti diisi lewat JS) -->
+    <div id="footer-paceholder"></div>
+
+    <!-- Catatan Tambahan: Jika ingin memunculkan icon, pastikan pasang link Bootstrap Icons di <head> ya! -->
+
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
      <Script src="./assets/js/index.js"></Script>
 </body>

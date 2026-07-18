@@ -7,19 +7,53 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/login.css">
 </head>
-<body>
-    <!-- header -->
-    <div id="header"></div>
+<!-- KUNCI MAKSIMAL: Latar belakang gelap (bg-dark), Flexbox penuh (d-flex), Tengah-Tengah (justify & align), Tinggi pas layar (min-vh-100) -->
+<body class="bg-dark d-flex justify-content-center align-items-center min-vh-100">
 
-    <form id="formLogin">
-        <input type="text" id="input_noid_username" placeholder="Masukkan username/noid anda">
-        <input type="password" id="input_password" placeholder="Masukkan password anda">
-        <button type="submit">Masuk</button>
-    </form>
+    <!-- Kotak Login (Card Putih Melayang) -->
+    <div class="card shadow border-0 p-4 mx-3" style="width: 100%; max-width: 420px; border-radius: 1rem;">
+        <div class="card-body">
+            
+            <!-- Identitas Aplikasi -->
+            <div class="text-center mb-4">
+                <h2 class="fw-bold text-dark mb-1">Elk<span class="text-warning">POS</span></h2>
+                <p class="text-muted small">Masuk ke sistem kasir digital</p>
+            </div>
 
-    <div id="footer"></div>
+            <!-- Form Login -->
+            <form id="formLogin">
+                
+                <!-- Input 1: Username / No. ID -->
+                <div class="mb-3">
+                    <label for="input_noid_username" class="form-label small fw-semibold text-secondary">Username / No. ID</label>
+                    <input type="text" class="form-control py-2" id="input_noid_username" placeholder="Masukkan username/noid anda" required>
+                </div>
 
+                <!-- Input 2: Password -->
+                <div class="mb-4">
+                    <label for="input_password" class="form-label small fw-semibold text-secondary">Password</label>
+                    <input type="password" class="form-control py-2" id="input_password" placeholder="Masukkan password anda" required>
+                </div>
+
+                <!-- Tombol Masuk -->
+                <button type="submit" class="btn btn-warning w-100 py-2 fw-bold text-dark shadow-sm">
+                    Masuk ke Sistem
+                </button>
+
+            </form>
+
+            <!-- Link Tambahan -->
+            <div class="text-center mt-4">
+                <a href="index.html" class="text-decoration-none small text-muted">
+                    <i class="bi bi-arrow-left"></i> Kembali ke Beranda
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script Javascript bawaanmu tetap di paling bawah -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <script src="./assets/js/login.js "></script>
+    <script src="./assets/js/login.js"></script>
 </body>
 </html>
