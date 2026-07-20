@@ -1,4 +1,4 @@
-// header dan footer/
+// header home
 fetch('./templates/header.html')
     .then(function(response){
         return response.text()
@@ -8,6 +8,7 @@ fetch('./templates/header.html')
         header_placeholder.innerHTML = data;
     })
 
+// footer home
 fetch('./templates/footer.html')
     .then(function(response){
         return response.text()
@@ -16,3 +17,4 @@ fetch('./templates/footer.html')
         const footer_placeholder = document.getElementById('footer-paceholder');
         footer_placeholder.innerHTML = data;
     })
+

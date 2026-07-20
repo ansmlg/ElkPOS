@@ -1,0 +1,92 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const menuLinks = document.querySelectorAll('#sidebar_menu .nav-link');
+    const contentArea = document.getElementById('content_area');
+
+    // 1. FUNGSI UTAMA UNTUK MENGAMBIL FILE HTML LUAR
+    function loadPage(pageUrl) {
+        fetch(pageUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Gagal memuat halaman (${response.status})`);
+                }
+                return response.text(); // Ubah file mentah menjadi teks HTML
+            })
+            .then(htmlContent => {
+                // Suntikkan isi file HTML ke dalam tag <main>
+                contentArea.innerHTML = htmlContent;
+
+                const modalElement = document.getElementById('modalPembayaran');
+                if (modalElement) {
+                    // Daftarkan ulang modal tersebut ke sistem Bootstrap secara manual
+                    const modalPembayaran = new bootstrap.Modal(modalElement);
+
+                    // Cari tombol proses bayar
+                    const btnProsesBayar = document.querySelector('[data-bs-target="#modalPembayaran"]');
+                    if (btnProsesBayar) {
+                        // Pasang sensor klik manual untuk memunculkan modal
+                        btnProsesBayar.addEventListener('click', function () {
+                            modalPembayaran.show();
+                        });
+                    }
+                }
+            })
+            .catch(error => {
+                contentArea.innerHTML = `
+                    <div class="alert alert-danger border-0 shadow-sm" role="alert">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        <strong>Sistem Error:</strong> ${error.message}. Pastikan file target ada di folder pages/.
+                    </div>
+                `;
+            });
+    }
+
+    // 2. HALAMAN AWAL (DEFAULT)
+    // Saat aplikasi pertama dibuka, otomatis sedot pages/dashboard.html
+    loadPage('pages/dashboard.html');
+
+    // 3. LOGIKA KETIKA MENU SIDEBAR DIKLIK
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function (event) {
+            event.preventDefault(); // Mengunci agar browser tidak reload halaman
+
+            const targetPage = this.getAttribute('data-page');
+            if (targetPage) {
+                loadPage(targetPage); // Jalankan fungsi fetch halaman baru
+                updateSidebarUI(this); // Geser warna indikator aktif (kuning)
+            }
+        });
+    });
+
+    // 4. FUNGSI EFEK VISUAL SIDEBAR (Pindah Warna Aktif)
+    function updateSidebarUI(clickedLink) {
+        menuLinks.forEach(link => {
+            link.classList.remove('active', 'bg-warning', 'text-dark', 'fw-semibold');
+            link.classList.add('text-white');
+        });
+
+        clickedLink.classList.add('active', 'bg-warning', 'text-dark', 'fw-semibold');
+        clickedLink.classList.remove('text-white');
+    }
+
+
+    const logout = document.getElementById("logout");
+    
+    logout.addEventListener('click', function keluar(){
+        if (confirm("Apakah anda yakin ingin logout?")){
+            fetch("/../api/logout.php", {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "sukses"){
+                    window.location.href = '../index.html';
+                }
+            })
+            .catch(
+                error => console.error("Gagal Logout: ", error)
+            )
+        }
+    })
+
+
+});

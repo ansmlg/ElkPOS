@@ -1,14 +1,3 @@
-// memuat header dan footer
-fetch('./templates/header.html').then(function(response){return response.text()}).then(function(data){const header = document.getElementById('header'); header.innerHTML = data})
-fetch('./templates/footer.html')
-.then(function(response){
-    return response.text();
-})
-.then(function(data){
-    document.getElementById('footer').innerHTML = data;
-})
-
-
 const formLogin = document.getElementById('formLogin');
 
 formLogin.addEventListener('submit', function(event){
@@ -22,7 +11,7 @@ formLogin.addEventListener('submit', function(event){
         password: input_password
     }
 
-    fetch("api/users.php", {
+    fetch("../api/users.php", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -36,7 +25,7 @@ formLogin.addEventListener('submit', function(event){
         alert(hasilRespon.pesan);
 
         if(hasilRespon.status === "sukses"){
-            window.location.href = "dashboard.html"
+            window.location.href = "../app/index.html"
         }
     })
     .catch(function(error){
