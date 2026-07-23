@@ -1,4 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+    // cek session
+    fetch('/api/check-session')
+        .then(response => response.json())
+        .then(dataRespon => {
+            if (dataRespon.status !== "login") {
+                window.location.href = '../auth/login.html';
+            }
+            const nama = document.getElementById('nama');
+            nama.innerText = dataRespon.nama;
+            const role = document.getElementById('role');
+            if (dataRespon.role === "admin") {
+                role.innerText = "Admin";
+            } else if (dataRespon.role === "kasir") {
+                role.innerText = "Kasir";
+            } else {
+                role.innerText = "Owner";
+            }
+        })
+
     const menuLinks = document.querySelectorAll('#sidebar_menu .nav-link');
     const contentArea = document.getElementById('content_area');
 
@@ -14,6 +34,12 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(htmlContent => {
                 // Suntikkan isi file HTML ke dalam tag <main>
                 contentArea.innerHTML = htmlContent;
+                // console.log(pageUrl)
+                if(pageUrl === 'pages/stok_produk.html'){
+                    const script = document.createElement('script');
+                    script.src = "/assets/js/stok_produk.js";
+                    document.body.appendChild(script);
+                }
 
                 const modalElement = document.getElementById('modalPembayaran');
                 if (modalElement) {
@@ -69,24 +95,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    const logout = document.getElementById("logout");
-    
-    logout.addEventListener('click', function keluar(){
-        if (confirm("Apakah anda yakin ingin logout?")){
-            fetch("/../api/logout.php", {
+
+    // fungsi logout
+    document.getElementById("logout").addEventListener('click', function keluar() {
+        if (confirm("Apakah anda yakin ingin logout?")) {
+            fetch("/api/logout", {
                 method: 'POST'
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === "sukses"){
-                    window.location.href = '../index.html';
-                }
-            })
-            .catch(
-                error => console.error("Gagal Logout: ", error)
-            )
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "sukses") {
+                        window.location.href = '../index.html';
+                    }
+                })
+                .catch(
+                    error => console.error("Gagal Logout: ", error)
+                )
         }
     })
-
 
 });

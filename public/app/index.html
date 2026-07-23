@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:">
     <title>ElkPOS - Dashboard Kasir</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -21,7 +22,7 @@
         <!-- ========================================== -->
         <div class="bg-dark text-white p-3 d-none d-md-flex flex-column" style="width: 280px; flex-shrink: 0;">
             <!-- Logo / Brand -->
-            <a href="#" class="d-flex align-items-center mb-4 text-white text-decoration-none fs-4 fw-bold">
+            <a href="./index.html" class="d-flex align-items-center mb-4 text-white text-decoration-none fs-4 fw-bold">
                 <i class="bi bi-cpu-fill me-2 text-warning"></i> ElkPOS
             </a>
 
@@ -30,22 +31,23 @@
             <!-- Daftar Menu Navigasi -->
             <ul class="nav nav-pills flex-column mb-auto" id="sidebar_menu">
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link active bg-warning text-dark fw-semibold" data-page="./pages/dashboard.html">
+                    <a href="#" class="nav-link active bg-warning text-dark fw-semibold"
+                        data-page="pages/dashboard.html">
                         <i class="bi bi-speedometer2 me-2"></i> Dashboard
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-white hover-opacity" data-page="./pages/kasir.html">
+                    <a href="#" class="nav-link text-white hover-opacity" data-page="pages/kasir.html">
                         <i class="bi bi-cart3 me-2"></i> Mesin Kasir
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-white hover-opacity" data-page="./pages/stok_produk.html">
+                    <a href="#" class="nav-link text-white hover-opacity" data-page="pages/stok_produk.html">
                         <i class="bi bi-box-seam me-2"></i> Stok Produk
                     </a>
                 </li>
                 <li class="nav-item mb-2">
-                    <a href="#" class="nav-link text-white hover-opacity" data-page="./pages/laporan.html">
+                    <a href="#" class="nav-link text-white hover-opacity" data-page="pages/laporan.html">
                         <i class="bi bi-graph-up-arrow me-2"></i> Laporan
                     </a>
                 </li>
@@ -57,7 +59,8 @@
             <div class="dropdown">
                 <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    <strong class="small"><i class="bi bi-person-circle me-2"></i> Kasir: Ahmad</strong>
+                    <strong class="small"><i class="bi bi-person-circle me-2"></i><span id="role"></span> : <span
+                            id="nama"></span></strong>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end shadow">
                     <li><a class="dropdown-item" href="#">Profil</a></li>
@@ -65,7 +68,7 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item text-danger" id="logout">Keluar</a></li>
+                    <li><button class="dropdown-item text-danger" id="logout">Keluar</button></li>
                 </ul>
             </div>
         </div>
@@ -100,16 +103,17 @@
 
             <!-- KONTEN HALAMAN SEBENARNYA -->
             <main class="p-4" id="content_area">
-                
+
             </main>
 
         </div>
 
     </div>
-
     <!-- Bootstrap JS (WAJIB untuk dropdown kasir) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./../assets/js/router.js"></script>
+    <!-- <script src="./../assets/js/stok_produk.js"></script> -->
+
 </body>
 
 </html>

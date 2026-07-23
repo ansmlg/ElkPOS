@@ -1,1 +1,29 @@
-<h1>ini Stok produk</h1>
+<div class="card border-0 shadow-sm bg-white">
+    <div class="card-header bg-white py-3 border-bottom-0 d-flex justify-content-between align-items-center">
+        <h5 class="mb-0 fw-bold text-dark">
+            <i class="bi bi-box-seam me-2 text-warning"></i>Daftar Stok Produk
+        </h5>
+        <button class="btn btn-warning btn-sm fw-semibold text-dark shadow-sm" data-bs-toggle="modal" data-bs-target="#modalTambahProduk">
+            <i class="bi bi-plus-lg me-1"></i>Tambah Produk
+        </button>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light text-muted small text-uppercase">
+                    <tr>
+                        <th class="ps-4" style="width: 80px;">ID</th>
+                        <th>Kategori ID</th>
+                        <th>Barcode / SKU</th>
+                        <th>Nama Produk</th>
+                        <th>Harga Jual</th>
+                        <th>Stok</th>
+                        <th class="pe-4 text-center" style="width: 120px;">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="table_produk" class="small text-dark">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+</div>

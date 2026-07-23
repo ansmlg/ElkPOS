@@ -11,7 +11,7 @@ formLogin.addEventListener('submit', function(event){
         password: input_password
     }
 
-    fetch("../api/users.php", {
+    fetch("/api/login", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
