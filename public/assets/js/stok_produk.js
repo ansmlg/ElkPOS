@@ -15,7 +15,7 @@ fetch('/api/lihat-produk', {
                     <td class="ps-4 fw-semibold text-secondary">#${produk.id}</td>
                     <td>
                         <span class="badge bg-light text-dark border">
-                            ${produk.kategori_id || '-'}
+                            ${produk.nama_kategori || '-'}
                         </span>
                     </td>
                     <td>
