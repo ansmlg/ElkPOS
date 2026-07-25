@@ -3,7 +3,8 @@
         <h5 class="mb-0 fw-bold text-dark">
             <i class="bi bi-box-seam me-2 text-warning"></i>Daftar Stok Produk
         </h5>
-        <button class="btn btn-warning btn-sm fw-semibold text-dark shadow-sm" data-bs-toggle="modal" data-bs-target="#modalTambahProduk">
+        <button class="btn btn-warning btn-sm fw-semibold text-dark shadow-sm" data-bs-toggle="modal"
+            data-bs-target="#modalTambahProduk">
             <i class="bi bi-plus-lg me-1"></i>Tambah Produk
         </button>
     </div>
@@ -22,8 +23,72 @@
                     </tr>
                 </thead>
                 <tbody id="table_produk" class="small text-dark">
-                    </tbody>
+                </tbody>
             </table>
         </div>
     </div>
 </div>
+
+
+<<!-- Modal Untuk Tambah Data Produk -->
+    <div class="modal fade" id="modalTambahProduk" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered"> <!-- Pembungkus wajib agar modal muncul [12] -->
+            <div class="modal-content border-0 shadow">
+
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title fw-bold text-dark">
+                        <i class="bi bi-box-seam me-2 text-warning"></i>Tambah Produk Baru
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body p-4">
+                    <form id="formTambahProduk">
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold text-secondary">Nama Produk</label>
+                            <!-- Perbaikan: type="text" bukan radio [3] -->
+                            <input type="text" class="form-control" name="nama_produk"
+                                placeholder="Contoh: Laptop Asus Vivobook" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold text-secondary">Kategori</label>
+                            <!-- Saran: Gunakan select untuk konsistensi database kategori_id [4] -->
+                            <select class="form-select" name="kategori_id" required>
+                                <option value="">Pilih Kategori...</option>
+                                <option value="1">Laptop</option>
+                                <option value="2">Smartphone</option>
+                                <option value="3">Aksesoris</option>
+                                <option value="4">Case</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small fw-semibold text-secondary">Barcode / SKU</label>
+                            <input type="text" class="form-control" name="barcode" placeholder="Contoh: LAP-ASUS-V14">
+                        </div>
+
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <label class="form-label small fw-semibold text-secondary">Harga Jual (Rp)</label>
+                                <input type="number" class="form-control" name="harga_jual" placeholder="0" required>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label small fw-semibold text-secondary">Stok Awal</label>
+                                <input type="number" class="form-control" name="stok" placeholder="0" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer border-top-0 p-4 pt-0">
+                    <button type="button" class="btn btn-light w-50 py-2 fw-semibold"
+                        data-bs-dismiss="modal">Batal</button>
+                    <!-- Button submit yang terhubung ke formTambahProduk [13] -->
+                    <button type="submit" form="formTambahProduk"
+                        class="btn btn-warning w-50 py-2 fw-bold text-dark">Simpan Produk</button>
+                </div>
+
+            </div>
+        </div>
+    </div>

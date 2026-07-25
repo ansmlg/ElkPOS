@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
     // cek session
     fetch('/api/check-session')
         .then(response => response.json())
@@ -35,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Suntikkan isi file HTML ke dalam tag <main>
                 contentArea.innerHTML = htmlContent;
                 // console.log(pageUrl)
-                if(pageUrl === 'pages/stok_produk.html'){
+                if (pageUrl === 'pages/stok_produk.html') {
                     const script = document.createElement('script');
                     script.src = "/assets/js/stok_produk.js";
                     document.body.appendChild(script);
@@ -67,14 +66,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // 2. HALAMAN AWAL (DEFAULT)
-    // Saat aplikasi pertama dibuka, otomatis sedot pages/dashboard.html
-    loadPage('pages/dashboard.html');
+    // Saat aplikasi pertama dibuka, otomatis sedot pages/dashboard.html\
+    const defaulPage = 'pages/stok_produk.html'
+    loadPage(defaulPage);
 
     // 3. LOGIKA KETIKA MENU SIDEBAR DIKLIK
     menuLinks.forEach(link => {
         link.addEventListener('click', function (event) {
             event.preventDefault(); // Mengunci agar browser tidak reload halaman
-
             const targetPage = this.getAttribute('data-page');
             if (targetPage) {
                 loadPage(targetPage); // Jalankan fungsi fetch halaman baru
@@ -92,6 +91,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         clickedLink.classList.add('active', 'bg-warning', 'text-dark', 'fw-semibold');
         clickedLink.classList.remove('text-white');
+    }
+
+    // TENTUKAN WARNA TOMBOL AKTIF DI AWAL 
+    const defaultLink = Array.from(menuLinks).find(link => link.getAttribute('data-page') === defaulPage);
+    if (defaultLink) {
+        updateSidebarUI(defaultLink);
     }
 
 

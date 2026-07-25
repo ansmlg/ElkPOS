@@ -47,6 +47,12 @@ switch ($uri) {
         }
         break;
 
+    case '/api/tambah-produk':
+        if($method === 'POST'){
+            $produkController->addDataProduk();
+        }
+        break;
+
     default:
         http_response_code(404);
         echo json_encode(["status" => "error", "pesan" => "Endpoint tidak ditemukan"]);
