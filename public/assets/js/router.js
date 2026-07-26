@@ -34,10 +34,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Suntikkan isi file HTML ke dalam tag <main>
                 contentArea.innerHTML = htmlContent;
                 // console.log(pageUrl)
-                if (pageUrl === 'pages/stok_produk.html') {
-                    const script = document.createElement('script');
-                    script.src = "/assets/js/stok_produk.js";
-                    document.body.appendChild(script);
+                if (pageUrl.includes('pages/stok_produk.html')) {
+                    if(typeof initStokProduk === 'undefined'){
+                        const script = document.createElement('script');
+                        script.src = "/assets/js/stok_produk.js";
+                        script.onload = () => initStokProduk();
+                        document.body.appendChild(script);
+                    }else{
+                        initStokProduk();
+                    }
                 }
 
                 const modalElement = document.getElementById('modalPembayaran');

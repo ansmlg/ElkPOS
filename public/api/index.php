@@ -17,6 +17,7 @@ $produkController = new ProdukController();
 
 // Routing System
 switch ($uri) {
+    // Controller Auth
     case '/api/login':
         if ($method === 'POST') {
             $authController->login();
@@ -25,7 +26,6 @@ switch ($uri) {
             echo json_encode(["status" => "error", "pesan" => "Method Not Allowed"]);
         }
         break;
-
     case '/api/check-session':
         if ($method === 'GET') {
             $authController->checkSession();
@@ -34,25 +34,32 @@ switch ($uri) {
             echo json_encode(["status" => "error", "pesan" => "Method Not Allowed"]);
         }
         break;
-
     case '/api/logout':
         if ($method === 'POST' || $method === 'GET') {
             $authController->logout();
         }
         break;
 
+
+        // Controller Produk
     case '/api/lihat-produk':
         if($method === 'GET'){
             $produkController->getDataProduk();
         }
         break;
-
     case '/api/tambah-produk':
         if($method === 'POST'){
             $produkController->addDataProduk();
         }
         break;
+    case'/api/hapus-produk':
+        if($method === 'POST'){
+            $produkController->deleteDataProduk();
+        }
+        break;
 
+
+        
     default:
         http_response_code(404);
         echo json_encode(["status" => "error", "pesan" => "Endpoint tidak ditemukan"]);
