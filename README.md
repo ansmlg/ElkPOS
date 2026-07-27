@@ -1,35 +1,87 @@
 # 📦 ElkPOS - Enterprise Point of Sales System
 
+> **Status:** 🚧 Work in Progress (Dalam Pengembangan)
+
 ElkPOS adalah aplikasi **Enterprise Point of Sales (POS)** modern yang dirancang khusus untuk toko elektronik. Aplikasi ini dibangun menggunakan arsitektur **Single Page Application (SPA)** menggunakan **JavaScript Vanilla** pada sisi frontend dan **PHP Native** pada sisi backend.
 
-Tujuan utama proyek ini adalah membangun sistem kasir yang ringan, cepat, aman, mudah dipelihara, serta menerapkan standar pengembangan perangkat lunak (Software Engineering) yang baik.
+Proyek ini dibuat sebagai media pembelajaran sekaligus implementasi praktik terbaik dalam pengembangan aplikasi web modern menggunakan teknologi native tanpa framework besar. Fokus utama pengembangan adalah menghasilkan aplikasi yang memiliki struktur kode yang rapi, mudah dipelihara, aman, dan mudah dikembangkan.
+
+> **Catatan:** Proyek ini masih dalam tahap pengembangan aktif. Dokumentasi, struktur folder, dan fitur dapat berubah seiring proses pengembangan.
 
 ---
 
-# 🚀 Fitur Utama
+# 🎯 Tujuan Proyek
 
+Tujuan utama pengembangan ElkPOS adalah:
+
+- Membangun aplikasi kasir modern berbasis web.
+- Menerapkan prinsip Software Engineering dalam proyek nyata.
+- Mempelajari arsitektur Single Page Application (SPA).
+- Mengimplementasikan PHP Native menggunakan pendekatan Object Oriented Programming (OOP).
+- Menggunakan Docker sebagai development environment.
+- Membuat struktur proyek yang aman, modular, dan mudah dikembangkan.
+
+---
+
+# 🚀 Fitur
+
+## ✅ Fitur yang Sudah Tersedia
+
+- Struktur proyek berbasis Layered Architecture
 - Single Page Application (SPA)
-- Dashboard Interaktif
-- Manajemen Produk
-- Manajemen Stok
-- Sistem Kasir
-- Laporan Penjualan
-- Login Multi User
+- Docker Development Environment
+- Konfigurasi Nginx
 - Central API Routing
-- Docker Environment
-- Responsive Design
+- Landing Page
+- Halaman Login
+- Dashboard Layout
+- Halaman Kasir
+- Halaman Stok Produk
+- Halaman Laporan
+- Routing halaman menggunakan JavaScript
 
 ---
 
-# 🛠 Tech Stack
+## 🚧 Fitur yang Sedang Dikembangkan
+
+- Sistem Login
+- Session Authentication
+- Dashboard Dinamis
+- CRUD Produk
+- CRUD Stok Produk
+- Sistem Transaksi
+- Validasi Form
+- API Response
+- Integrasi Database
+
+---
+
+## 📌 Fitur yang Direncanakan
+
+- Dashboard Analytics
+- Barcode Scanner
+- Serial Number Management
+- Manajemen Garansi
+- Manajemen Supplier
+- Manajemen Pelanggan
+- Multi Role User
+- Export PDF
+- Export Excel
+- Backup Database
+- Audit Log
+- REST API Documentation
+
+---
+
+# 🛠️ Tech Stack
 
 ## Frontend
 
 - HTML5
 - CSS3
-- JavaScript Vanilla
-- Bootstrap 5
+- JavaScript (Vanilla)
 - Fetch API
+- Bootstrap 5
 
 ## Backend
 
@@ -41,82 +93,20 @@ Tujuan utama proyek ini adalah membangun sistem kasir yang ringan, cepat, aman, 
 
 - MySQL 8.0
 
-## Web Server
-
-- Nginx
-- PHP-FPM
-
-## Containerization
+## Infrastructure
 
 - Docker
 - Docker Compose
+- Nginx
+- PHP-FPM
 
 ---
 
-# 📂 Struktur Proyek
+# 🏗️ Arsitektur Sistem
 
-```text
-pos/
-├── docker-compose.yml
-├── nginx.conf
-├── README.md
-├── init.sql
-│
-├── public/
-│   ├── index.html
-│   │
-│   ├── auth/
-│   │   └── login.html
-│   │
-│   ├── assets/
-│   │   ├── css/
-│   │   │   ├── auth.css
-│   │   │   ├── dashboard.css
-│   │   │   └── landing.css
-│   │   │
-│   │   └── js/
-│   │       ├── auth.js
-│   │       ├── kasir.js
-│   │       ├── router.js
-│   │       ├── script.js
-│   │       └── stok_produk.js
-│   │
-│   ├── app/
-│   │   ├── index.html
-│   │   └── pages/
-│   │       ├── dashboard.html
-│   │       ├── kasir.html
-│   │       ├── laporan.html
-│   │       └── stok_produk.html
-│   │
-│   ├── api/
-│   │   └── index.php
-│   │
-│   ├── templates/
-│   │   ├── header.html
-│   │   └── footer.html
-│   │
-│   └── cek/
-│       └── test.php
-│
-└── src/
-    ├── Controller/
-    │   ├── AuthController.php
-    │   └── ProdukController.php
-    │
-    └── Database/
-        └── koneksi.php
-```
+ElkPOS menggunakan pendekatan **Layered Architecture** dan **Single Page Application (SPA)**.
 
----
-
-# 🏛 Arsitektur Sistem
-
-ElkPOS menerapkan arsitektur **Layered Architecture** dengan konsep **Single Page Application (SPA)**.
-
-Seluruh halaman aplikasi dimuat menggunakan JavaScript sehingga browser tidak perlu melakukan reload halaman setiap kali berpindah menu.
-
-Alur sistem:
+Semua request dari frontend akan dikirim menggunakan **Fetch API** menuju satu pintu API (**Central Router**) sebelum diteruskan ke Controller yang sesuai.
 
 ```text
 Browser
@@ -135,73 +125,84 @@ Central Router
 Controller
     │
     ▼
-Database (MySQL)
+Database
+```
+
+Pendekatan ini membuat aplikasi lebih mudah dipelihara, lebih aman, dan lebih mudah dikembangkan ketika jumlah fitur semakin bertambah.
+
+---
+
+# 📂 Struktur Proyek
+
+```text
+pos/
+├── docker-compose.yml
+├── init.sql
+├── nginx.conf
+├── README.md
+│
+├── public
+│   ├── api
+│   │   └── index.php
+│   ├── app
+│   │   ├── index.html
+│   │   └── pages
+│   │       ├── dashboard.html
+│   │       ├── kasir.html
+│   │       ├── laporan.html
+│   │       └── stok_produk.html
+│   ├── assets
+│   │   ├── css
+│   │   │   ├── auth.css
+│   │   │   ├── dashboard.css
+│   │   │   └── landing.css
+│   │   └── js
+│   │       ├── auth.js
+│   │       ├── kasir.js
+│   │       ├── router.js
+│   │       ├── script.js
+│   │       └── stok_produk.js
+│   ├── auth
+│   │   └── login.html
+│   ├── cek
+│   │   └── test.php
+│   ├── index.html
+│   └── templates
+│       ├── footer.html
+│       └── header.html
+│
+└── src
+    ├── Controller
+    │   ├── AuthController.php
+    │   └── ProdukController.php
+    └── Database
+        └── koneksi.php
 ```
 
 ---
 
 # 📁 Penjelasan Folder
 
-## Root Directory
-
-Berisi konfigurasi utama aplikasi.
-
-| File | Keterangan |
-|------|------------|
-| docker-compose.yml | Konfigurasi Docker |
-| nginx.conf | Konfigurasi Web Server |
-| init.sql | Database awal |
-| README.md | Dokumentasi proyek |
-
----
-
-## public/
+## `public/`
 
 Merupakan satu-satunya folder yang dapat diakses langsung oleh browser.
 
-Folder ini berisi:
+Berisi:
 
 - Landing Page
 - Login
 - Asset CSS
 - Asset JavaScript
-- Template HTML
 - Halaman SPA
 - API Entry Point
 
 ---
 
-## public/assets/
-
-Berisi seluruh aset frontend.
-
-### css/
-
-Berisi stylesheet aplikasi.
-
-- auth.css
-- dashboard.css
-- landing.css
-
-### js/
-
-Berisi seluruh logika frontend.
-
-- router.js
-- auth.js
-- kasir.js
-- stok_produk.js
-- script.js
-
----
-
-## public/app/
+## `public/app/`
 
 Merupakan area utama aplikasi setelah pengguna berhasil login.
 
-### pages/
-
-Berisi halaman-halaman SPA.
+Folder ini berisi halaman-halaman SPA seperti:
 
 - Dashboard
 - Kasir
@@ -210,42 +211,42 @@ Berisi halaman-halaman SPA.
 
 ---
 
-## public/api/
+## `public/api/`
 
-Berisi satu file utama:
+Berisi file:
 
 ```text
 index.php
 ```
 
-File ini bertugas sebagai **Central API Router**.
+File ini berfungsi sebagai **Central API Router**.
 
-Semua request API akan masuk melalui file ini sebelum diteruskan ke Controller yang sesuai.
-
----
-
-## src/
-
-Folder ini bersifat privat sehingga tidak dapat diakses langsung melalui browser.
-
-Berisi seluruh logika bisnis aplikasi.
+Seluruh request API akan diproses melalui file ini sebelum diteruskan ke Controller.
 
 ---
 
-## src/Controller/
+## `src/`
 
-Berisi Controller aplikasi.
+Folder privat yang tidak dapat diakses langsung oleh browser.
+
+Folder ini menyimpan seluruh logika bisnis aplikasi.
+
+---
+
+## `src/Controller/`
+
+Berisi seluruh Controller aplikasi.
 
 Saat ini terdiri dari:
 
-- AuthController.php
-- ProdukController.php
+- AuthController
+- ProdukController
 
-Controller bertugas menerima request dari API, memproses data, kemudian mengembalikan response ke frontend.
+Controller bertugas menerima request dari API kemudian memproses data sebelum dikirim kembali ke frontend.
 
 ---
 
-## src/Database/
+## `src/Database/`
 
 Berisi konfigurasi koneksi database.
 
@@ -257,12 +258,35 @@ koneksi.php
 
 ---
 
-# 🔄 Cara Kerja SPA
+# 🗄️ Database
 
-Ketika pengguna memilih menu:
+Database menggunakan MySQL.
+
+Seluruh struktur database berada pada file:
 
 ```text
-Dashboard
+init.sql
+```
+
+Database dirancang untuk mendukung fitur:
+
+- User
+- Produk
+- Kategori
+- Transaksi
+- Detail Transaksi
+- Manajemen Stok
+
+Struktur database akan terus berkembang mengikuti kebutuhan aplikasi.
+
+---
+
+# 🔄 Cara Kerja SPA
+
+Ketika pengguna membuka menu aplikasi:
+
+```text
+Klik Menu
 
 ↓
 
@@ -270,84 +294,42 @@ router.js
 
 ↓
 
-Fetch dashboard.html
+Fetch HTML
 
 ↓
 
-Konten dimuat ke dalam index.html
+Konten dimuat
 
 ↓
 
 Tanpa Reload Browser
 ```
 
-Keuntungan:
+Keuntungan pendekatan SPA:
 
 - Lebih cepat
-- Lebih ringan
+- Lebih responsif
+- Mengurangi beban server
 - Pengalaman pengguna lebih baik
-
----
-
-# 🗄 Database
-
-Database menggunakan MySQL.
-
-Saat ini menggunakan file:
-
-```text
-init.sql
-```
-
-Database menyimpan data seperti:
-
-- User
-- Produk
-- Kategori
-- Transaksi
-- Detail Transaksi
 
 ---
 
 # 🔐 Keamanan
 
-Beberapa konsep keamanan yang diterapkan:
+Beberapa konsep keamanan yang diterapkan pada proyek ini:
 
-- Folder `src` tidak dapat diakses publik.
-- Semua API menggunakan Central Routing.
-- Validasi request dilakukan pada Controller.
-- Koneksi database dipisahkan dari folder publik.
-- Struktur proyek mengikuti prinsip Separation of Concerns (SoC).
-
----
-
-# 🐳 Docker
-
-Aplikasi dijalankan menggunakan Docker sehingga seluruh environment menjadi konsisten.
-
-Container yang digunakan:
-
-- Nginx
-- PHP
-- MySQL
-
-Menjalankan aplikasi:
-
-```bash
-docker-compose up -d
-```
-
-Menghentikan aplikasi:
-
-```bash
-docker-compose down
-```
+- Folder `src` tidak dapat diakses secara langsung.
+- Seluruh request API menggunakan Central Routing.
+- Pemisahan antara frontend dan backend.
+- Struktur kode mengikuti prinsip Separation of Concerns (SoC).
+- Persiapan penggunaan Prepared Statement untuk mencegah SQL Injection.
+- Validasi input pada sisi backend.
 
 ---
 
-# ▶ Instalasi
+# 🐳 Menjalankan Proyek
 
-## 1. Clone Repository
+## Clone Repository
 
 ```bash
 git clone https://github.com/username/elkpos.git
@@ -355,7 +337,7 @@ git clone https://github.com/username/elkpos.git
 
 ---
 
-## 2. Masuk ke Folder
+## Masuk ke Folder
 
 ```bash
 cd pos
@@ -363,7 +345,7 @@ cd pos
 
 ---
 
-## 3. Jalankan Docker
+## Jalankan Docker
 
 ```bash
 docker-compose up -d
@@ -371,21 +353,17 @@ docker-compose up -d
 
 ---
 
-## 4. Import Database
+## Import Database
 
-Import file:
+Import file berikut ke MySQL.
 
 ```text
 init.sql
 ```
 
-ke dalam database MySQL.
-
 ---
 
-## 5. Jalankan Aplikasi
-
-Buka browser:
+## Buka Browser
 
 ```text
 http://localhost:8080
@@ -393,82 +371,124 @@ http://localhost:8080
 
 ---
 
-# 📈 Roadmap Pengembangan
+# 📈 Progress Pengembangan
 
-Fitur yang akan dikembangkan selanjutnya:
+| Modul | Status |
+|--------|:------:|
+| Struktur Proyek | ✅ |
+| Docker Environment | ✅ |
+| Konfigurasi Nginx | ✅ |
+| Landing Page | ✅ |
+| SPA Routing | ✅ |
+| Login | 🚧 |
+| Dashboard | 🚧 |
+| Produk | 🚧 |
+| Kasir | 🚧 |
+| Laporan | 🚧 |
+| Database | 🚧 |
+| Session Login | 🚧 |
+| Multi Role | ⏳ |
+| Supplier | ⏳ |
+| Customer | ⏳ |
+| Backup Database | ⏳ |
+| Dashboard Analytics | ⏳ |
+| Export PDF | ⏳ |
+| Export Excel | ⏳ |
 
-- Manajemen Kategori
-- Manajemen Supplier
-- Manajemen Pelanggan
-- Pembelian Barang
-- Return Barang
-- Export PDF
-- Export Excel
-- Grafik Penjualan
-- Backup Database
+### Keterangan
+
+- ✅ Selesai
+- 🚧 Sedang Dikembangkan
+- ⏳ Belum Dimulai
+
+---
+
+# 📋 Roadmap
+
+## Versi 0.1
+
+- Struktur proyek
+- Docker
+- Landing Page
+- SPA
+
+---
+
+## Versi 0.2
+
+- Login
+- Dashboard
+- CRUD Produk
+- CRUD Stok
+
+---
+
+## Versi 0.3
+
+- Sistem Kasir
+- Transaksi
+- Detail Transaksi
+
+---
+
+## Versi 0.4
+
+- Multi Role
+- Laporan
 - Dashboard Analytics
-- Hak Akses Multi Role
-- Audit Log
-- REST API
+
+---
+
+## Versi 1.0
+
+- Sistem POS siap digunakan.
+- Dokumentasi lengkap.
+- Optimasi performa.
+- Peningkatan keamanan.
+- Deployment ke server produksi.
 
 ---
 
 # 📚 Prinsip Software Engineering
 
-Selama pengembangan proyek ini diterapkan beberapa prinsip berikut.
+Selama pengembangan ElkPOS diterapkan beberapa prinsip berikut:
 
 ## Separation of Concerns (SoC)
 
-Memisahkan:
-
-- HTML
-- CSS
-- JavaScript
-- PHP
-- Database
-
----
+Memisahkan tampilan, logika aplikasi, dan akses database agar kode lebih terstruktur.
 
 ## Don't Repeat Yourself (DRY)
 
-Menghindari duplikasi kode dengan membuat fungsi dan struktur yang dapat digunakan kembali.
-
----
+Mengurangi duplikasi kode dengan membuat fungsi yang dapat digunakan kembali.
 
 ## Layered Architecture
 
-Membagi aplikasi menjadi beberapa lapisan agar lebih mudah dipelihara.
-
----
+Memisahkan aplikasi menjadi beberapa lapisan sehingga mudah dipelihara dan dikembangkan.
 
 ## Modular Programming
 
-Setiap fitur dibuat dalam modul terpisah sehingga mudah dikembangkan.
-
----
+Setiap fitur dikembangkan dalam modul terpisah agar tidak saling bergantung.
 
 ## Security First
 
-Mengutamakan keamanan dengan memisahkan logika bisnis dari folder publik.
+Mengutamakan keamanan sejak tahap awal pengembangan.
 
 ---
 
-# 🎯 Tujuan Proyek
+# 🤝 Kontribusi
 
-Proyek ElkPOS dibuat sebagai media pembelajaran Full Stack Web Development menggunakan teknologi native tanpa framework besar.
-
-Selain itu proyek ini bertujuan untuk menerapkan praktik terbaik dalam:
-
-- Software Engineering
-- Clean Code
-- Layered Architecture
-- Docker Development
-- Single Page Application
-- PHP Native
-- JavaScript Vanilla
+Karena proyek ini masih dalam tahap pengembangan, masukan, saran, maupun kontribusi sangat terbuka untuk membantu meningkatkan kualitas aplikasi.
 
 ---
 
-# 📝 Lisensi
+# ⚠️ Disclaimer
 
-Proyek ini dibuat untuk keperluan pembelajaran, pengembangan perangkat lunak, dan implementasi sistem Point of Sales berbasis web.
+ElkPOS merupakan proyek yang masih berada pada tahap **Work in Progress (WIP)**.
+
+Beberapa fitur, struktur folder, dokumentasi, maupun implementasi teknis masih dapat berubah mengikuti proses pengembangan. README ini akan diperbarui secara berkala agar tetap sesuai dengan perkembangan proyek.
+
+---
+
+# 📄 Lisensi
+
+Proyek ini dikembangkan untuk tujuan pembelajaran, pengembangan portofolio, dan implementasi konsep Software Engineering dalam pembangunan aplikasi Point of Sales berbasis web.
