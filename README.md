@@ -366,7 +366,7 @@ init.sql
 ## Buka Browser
 
 ```text
-http://localhost:8080
+http://localhost:80
 ```
 
 ---
